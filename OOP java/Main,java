@@ -1,0 +1,65 @@
+class Person {
+    public int id;
+    public String name;
+    public int age;
+
+    // Parameterized Constructor
+    public Person(int id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + id + ", Name: " + name + ", Age: " + age;
+    }
+
+    public String personType() {
+        if (age < 13) {
+            return "child";
+        } else if (age >= 13 && age < 20) {
+            return "teen";
+        } else if (age >= 20 && age < 40) {
+            return "adult";
+        } else {
+            return "old";
+        }
+    }
+}
+
+class Student extends Person {
+    public double result;
+
+    public Student(int id, String name, int age, double result) {
+        super(id, name, age);
+        this.result = result;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Result: " + result;
+    }
+
+    public String studentClass() {
+        if (result >= 3.00) {
+            return "first class";
+        } else if (result >= 2.00) {
+            return "second class";
+        } else if (result >= 1.00) {
+            return "third class";
+        } else {
+            return "failed";
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student student = new Student(1216, "Salma", 22, 3.85);
+
+        System.out.println("Details: " + student.toString());
+        System.out.println("Person Type: " + student.personType());
+        System.out.println("Class: " + student.studentClass());
+    }
+}
